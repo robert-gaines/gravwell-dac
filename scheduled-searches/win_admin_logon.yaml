@@ -1,0 +1,20 @@
+- search:
+    BackfillEnabled: true
+    DebugMode: false
+    Description: "Identify Windows Administrator Logon"
+    Disabled: false
+    Duration: -3600
+    Global: True
+    Groups: []
+    Labels: ['windows']
+    Name: "windows-admin-logon"
+    OneShot: false
+    Schedule: "*/15 * * * *"
+    ScheduledType: "search"
+    SearchReference: "5f87f3ca-c8c8-458a-b297-06e94c0d0aa3"
+    SearchSinceLastRun: true
+    TimeframeOffset: 0
+    Timezone: ""
+    WriteAccess:
+      GIDs: []
+      Global: true

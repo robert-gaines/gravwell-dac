@@ -1,0 +1,47 @@
+search:
+  BackfillEnabled: false
+  Can:
+    Delete: true
+    Modify: true
+    Share: true
+  DebugEvent: null
+  DebugMode: false
+  DebugOutput: null
+  Description: Proxmox Hypervisor Logon
+  Disabled: false
+  Duration: -900
+  ErrorHistory: null
+  Flow: ''
+  FlowNodeResults: null
+  GUID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
+  Global: false
+  Groups: []
+  ID: 1482408382
+  Labels:
+  - High
+  - Proxmox
+  - kit/io.gravwell.linuxsyslog
+  LastError: ''
+  LastRun: '2025-07-12T20:15:00-07:00'
+  LastRunDuration: 1426507062
+  LastSearchIDs:
+  - '13092878423'
+  Name: Proxmox Hypervisor Logon
+  OneShot: false
+  Owner: 1
+  PersistentMaps: {}
+  Schedule: '*/15 * * * *'
+  ScheduledType: search
+  Script: ''
+  ScriptLanguage: 0
+  SearchReference: 00000000-0000-0000-0000-000000000000
+  SearchSinceLastRun: false
+  SearchString: "tag=syslog syslog Message \r\n| words \"pvedaemon\"\r\n| words \"\
+    successful\" \r\n| words \"auth\"\r\n| fields Message"
+  Synced: false
+  TimeframeOffset: 0
+  Timezone: ''
+  Updated: '2025-06-21T05:14:34.477453521-07:00'
+  WriteAccess:
+    GIDs: []
+    Global: false

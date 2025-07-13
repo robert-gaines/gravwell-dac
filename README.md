@@ -1,2 +1,2 @@
 # gravwell-siem-config
-Gravwell SIEM Configuration Management Repository
+Gravwell SIEM - Detection as Code (or something loosely approximating the concept)

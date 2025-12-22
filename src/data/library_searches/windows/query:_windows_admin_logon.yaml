@@ -1,0 +1,31 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Description: 'Query: Windows Admin Logon'
+GUID: 5f87f3ca-c8c8-458a-b297-06e94c0d0aa3
+Global: true
+Labels:
+- windows
+Metadata:
+  timeframe: null
+Name: 'Query: Windows Admin Logon'
+Query: 'tag=windows winlog EventID == 4672
+
+  | winlog System.SubjectUserName !~ "$"
+
+  | winlog System.SubjectUserName != "SYSTEM"
+
+  | winlog System.SubjectUserName !~ "DWM"
+
+  | winlog System.SubjectUserName != "LOCAL SERVICE"
+
+  | winlog System.SubjectUserName != "NETWORK SERVICE"
+
+  '
+ThingUUID: f89fe557-710d-4f65-a887-d714f7fc799e
+UID: 1
+Updated: '2025-12-21T19:46:15.118150835-08:00'
+WriteAccess:
+  GIDs: []
+  Global: true

@@ -1,0 +1,45 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: 8868720c-afbe-422c-ae94-0e19d0db06c5
+  Type: flow
+Description: Network Area Storage Logon Alert
+Disabled: false
+Dispatchers:
+- ID: 6e11ebd6-ec83-46cc-9005-0f5beba80fa5
+  Type: scheduledsearch
+GIDs:
+- 1
+GUID: 38f7e076-9a13-4724-b825-1f2b746061b9
+Global: false
+IngestBlocked: false
+Labels:
+- Storage
+- Medium
+- linux
+- kit/io.gravwell.syslog
+LastUpdated: '2025-12-21T19:05:54.886061301-08:00'
+MaxEvents: 5
+Name: Network Area Storage Logon Alert
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: Message
+    Type: string
+TargetTag: _alerts
+ThingUUID: 9be16ffb-db3f-4732-a6c1-b272f220af4c
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

@@ -1,0 +1,58 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: a2d7737f-f038-41c4-a093-beeb7eab2f01
+  Type: flow
+Description: Honeypot Incursion
+Disabled: false
+Dispatchers:
+- ID: 90723cc5-4e1a-4633-8493-99088027739d
+  Type: scheduledsearch
+GIDs:
+- 1
+GUID: 918a2390-f7dc-42b8-a962-41e6c916fe85
+Global: false
+IngestBlocked: false
+Labels:
+- Honeypot
+- High
+- network
+- kit/io.gravwell.syslog
+- kit/io.gravwell.networkenrichment
+LastUpdated: '2025-12-21T19:07:01.281124087-08:00'
+MaxEvents: 25
+Name: Honeypot Incursion
+SaveSearchDuration: 0
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: srcip
+    Type: string
+  - Name: srcport
+    Type: string
+  - Name: dstip
+    Type: string
+  - Name: dstport
+    Type: string
+  - Name: srccountry
+    Type: string
+  - Name: action
+    Type: string
+  - Name: msg
+    Type: string
+TargetTag: _alerts
+ThingUUID: e6b80dc5-116a-42bc-8245-b0e8a556efc3
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

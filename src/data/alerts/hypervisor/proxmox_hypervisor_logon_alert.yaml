@@ -1,0 +1,44 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: b1f154d1-bba4-4b76-b521-96159f2d4736
+  Type: flow
+Description: Proxmox Hypervisor Logon Alert
+Disabled: false
+Dispatchers:
+- ID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
+  Type: scheduledsearch
+GIDs: []
+GUID: d0404f84-fb6c-4159-af3a-8b2a22d6b02f
+Global: false
+IngestBlocked: false
+Labels:
+- Proxmox
+- High
+- Hypervisor
+- kit/io.gravwell.linuxsyslog
+LastUpdated: '2025-12-21T19:05:26.463049796-08:00'
+MaxEvents: 1
+Name: Proxmox Hypervisor Logon Alert
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: Message
+    Type: string
+TargetTag: _alerts
+ThingUUID: 815fd61b-9fb7-454c-bafe-1ad0a8486f5a
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

@@ -1,0 +1,49 @@
+BackfillEnabled: true
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+DebugEvent: null
+DebugMode: false
+DebugOutput: null
+Description: Fortigate Syslog - UTM - IPS Event
+Disabled: false
+Duration: -300
+ErrorHistory: null
+Flow: ''
+FlowNodeResults: null
+GUID: 6ebdf06a-8965-4b73-b43d-45542117f56f
+Global: false
+Groups:
+- 1
+ID: 485056032
+Labels:
+- UTM
+- IPS
+- Syslog
+- Critical
+- network
+LastError: ''
+LastRun: '2025-12-21T20:15:00-08:00'
+LastRunDuration: 1410388601
+LastSearchIDs:
+- '34117618965'
+Name: Fortigate Syslog - UTM - IPS Event
+OneShot: false
+Owner: 1
+PersistentMaps: {}
+Schedule: '*/5 * * * *'
+ScheduledType: search
+Script: ''
+ScriptLanguage: 0
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchSinceLastRun: false
+SearchString: tag=syslog kv -q srcip dstip level type=="utm" subtype=="ips" attack
+  time eventtime | eval (level=="alert")
+Synced: false
+TimeframeOffset: 0
+Timezone: ''
+Updated: '2025-12-21T20:13:37.825796428-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

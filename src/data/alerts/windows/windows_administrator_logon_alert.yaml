@@ -1,0 +1,46 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: 1886d735-bb52-4956-9fd9-faf166434cd0
+  Type: flow
+Description: Windows Administrator Logon Event
+Disabled: false
+Dispatchers:
+- ID: ec2cd0f0-a876-4529-8efe-7d8924a6311c
+  Type: scheduledsearch
+GIDs: []
+GUID: 90fd047d-f113-4d51-a161-fd3b9c7701b5
+Global: false
+IngestBlocked: false
+Labels:
+- windows
+- High
+LastUpdated: '2025-12-21T19:05:23.370108254-08:00'
+MaxEvents: 5
+Name: Windows Administrator Logon Alert
+SaveSearchDuration: 2592000
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: EventID
+    Type: string
+  - Name: SubjectUserName
+    Type: string
+  - Name: Computer
+    Type: string
+TargetTag: _alerts
+ThingUUID: 7b732b7c-f989-482b-bdf7-4c41b1f7a0a4
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

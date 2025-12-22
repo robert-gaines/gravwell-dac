@@ -1,0 +1,47 @@
+BackfillEnabled: true
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+DebugEvent: null
+DebugMode: false
+DebugOutput: null
+Description: Honeypot Incursion
+Disabled: false
+Duration: -300
+ErrorHistory: null
+Flow: ''
+FlowNodeResults: null
+GUID: 90723cc5-4e1a-4633-8493-99088027739d
+Global: false
+Groups:
+- 1
+ID: 1668623174
+Labels:
+- Honeypot
+- High
+- network
+LastError: ''
+LastRun: '2025-12-21T20:15:00-08:00'
+LastRunDuration: 1243196064
+LastSearchIDs:
+- '8326099198'
+Name: Honeypot Incursions
+OneShot: false
+Owner: 1
+PersistentMaps: {}
+Schedule: '*/5 * * * *'
+ScheduledType: search
+Script: ''
+ScriptLanguage: 0
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchSinceLastRun: false
+SearchString: "tag=syslog syslog Message \r\n| words \"permit-wan-to-honeypots\" \r\
+  \n| kv srcip srcport dstip dstport srccountry action msg"
+Synced: false
+TimeframeOffset: 0
+Timezone: ''
+Updated: '2025-12-21T20:13:12.773637231-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

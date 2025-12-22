@@ -1,0 +1,20 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Description: Point to Point Map of Sessions in PCAP Data
+GUID: b46e6ed4-b3b2-431e-a0a8-0f007e1c6b8b
+Global: false
+Labels:
+- network
+Metadata:
+  timeframe: null
+Name: PCAP GeoIP - Point to Point
+Query: tag=pcap packet ipv4.SrcIP ipv4.DstIP | geoip SrcIP.Location as src DstIP.Location
+  as dst | point2point -srcloc src -dstloc dst
+ThingUUID: 36613335-512c-4ad8-beef-aa32448cd322
+UID: 1
+Updated: '2025-12-21T19:47:07.622259935-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

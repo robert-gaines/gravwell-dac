@@ -1,0 +1,46 @@
+BackfillEnabled: false
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+DebugEvent: null
+DebugMode: false
+DebugOutput: null
+Description: Proxmox Hypervisor Logon
+Disabled: false
+Duration: -900
+ErrorHistory: null
+Flow: ''
+FlowNodeResults: null
+GUID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
+Global: false
+Groups: []
+ID: 1482408382
+Labels:
+- High
+- Proxmox
+- hypervisor
+LastError: ''
+LastRun: '2025-12-21T20:15:00-08:00'
+LastRunDuration: 1199543122
+LastSearchIDs:
+- '1426200661'
+Name: Proxmox Hypervisor Logon
+OneShot: false
+Owner: 1
+PersistentMaps: {}
+Schedule: '*/15 * * * *'
+ScheduledType: search
+Script: ''
+ScriptLanguage: 0
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchSinceLastRun: false
+SearchString: "tag=syslog syslog Message \r\n| words \"pvedaemon\"\r\n| words \"successful\"\
+  \ \r\n| words \"auth\"\r\n| fields Message"
+Synced: false
+TimeframeOffset: 0
+Timezone: ''
+Updated: '2025-12-21T20:17:54.568710237-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

@@ -1,0 +1,20 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Description: ''
+GUID: 96d59b13-1451-4b39-bbbd-5431019b07dc
+Global: false
+Labels:
+- windows
+Metadata:
+  timeframe: null
+Name: Windows - Failed Logins
+Query: "tag=windows winlog EventData.EventID == 4625\r\n| stats count as failed_logins\
+  \ by EventID over 5m\r\n| eval (failed_logins >= 3)"
+ThingUUID: 44e497bb-0191-47ed-a248-fb3600bd7df1
+UID: 1
+Updated: '2025-12-21T19:45:55.180260187-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

@@ -1,0 +1,45 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: cd029062-08f1-4ec9-a6d5-a5e1ec95de06
+  Type: flow
+Description: Web Application Tampering
+Disabled: false
+Dispatchers:
+- ID: 9a12455a-aa14-4399-b16e-58083107b45e
+  Type: scheduledsearch
+GIDs: []
+GUID: ceea5f6e-79e0-4942-bf38-0818384cfd9f
+Global: false
+IngestBlocked: false
+Labels:
+- Webserver
+- WebApplication
+- Medium
+- linux
+- kit/io.gravwell.syslog
+LastUpdated: '2025-12-21T19:06:26.207347773-08:00'
+MaxEvents: 3
+Name: Web Application Tampering
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: Message
+    Type: string
+TargetTag: _alerts
+ThingUUID: b0e206da-8c2a-4f76-8b32-e1de8b9fa586
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

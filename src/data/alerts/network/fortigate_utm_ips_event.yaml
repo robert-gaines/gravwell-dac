@@ -1,0 +1,57 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: fe97cbd7-7c19-426a-b317-19ae474c1a29
+  Type: flow
+Description: Fortigate UTM IPS Event
+Disabled: false
+Dispatchers:
+- ID: 6ebdf06a-8965-4b73-b43d-45542117f56f
+  Type: scheduledsearch
+GIDs: []
+GUID: 91b155d5-5bce-4733-9049-18d5aeccf2ad
+Global: false
+IngestBlocked: false
+Labels:
+- Critical
+- network
+- kit/io.gravwell.syslog
+LastUpdated: '2025-12-21T19:06:40.691918162-08:00'
+MaxEvents: 100
+Name: Fortigate UTM IPS Event
+SaveSearchDuration: 604800
+SaveSearchEnabled: true
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: level
+    Type: string
+  - Name: type
+    Type: string
+  - Name: subtype
+    Type: string
+  - Name: srcip
+    Type: string
+  - Name: dstip
+    Type: string
+  - Name: attack
+    Type: string
+  - Name: time
+    Type: string
+  - Name: eventtime
+    Type: string
+TargetTag: _alerts
+ThingUUID: d32ddfd1-a15a-441c-b4f2-00b191de29ec
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

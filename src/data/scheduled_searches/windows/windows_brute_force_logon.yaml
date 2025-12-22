@@ -1,0 +1,45 @@
+BackfillEnabled: true
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+DebugEvent: null
+DebugMode: false
+DebugOutput: null
+Description: Windows Brute Force Logon
+Disabled: false
+Duration: -300
+ErrorHistory: null
+Flow: ''
+FlowNodeResults: null
+GUID: fd665463-48b0-4531-9232-295fb67a3f36
+Global: false
+Groups: []
+ID: 1321975504
+Labels:
+- windows
+- High
+LastError: ''
+LastRun: '2025-12-21T20:15:00-08:00'
+LastRunDuration: 1255518560
+LastSearchIDs:
+- '62107634000'
+Name: Windows Brute Force Logon
+OneShot: false
+Owner: 1
+PersistentMaps: {}
+Schedule: '*/5 * * * *'
+ScheduledType: search
+Script: ''
+ScriptLanguage: 0
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchSinceLastRun: false
+SearchString: "tag=windows winlog EventID==4625 System.SubjectUserName Computer TimeCreated\r\
+  \n| stats count by EventID\r\n| eval (count >= 3)"
+Synced: false
+TimeframeOffset: 0
+Timezone: ''
+Updated: '2025-12-21T20:17:11.663331672-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

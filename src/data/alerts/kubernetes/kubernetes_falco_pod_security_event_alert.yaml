@@ -1,0 +1,55 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: 04ec855a-de2c-4898-ba78-98b4a5813f54
+  Type: flow
+Description: Kubernetes Falco Pod Security Event Alert
+Disabled: false
+Dispatchers:
+- ID: 00fb1ba0-439c-41f0-bb9b-4e14cfb8c3ea
+  Type: scheduledsearch
+GIDs:
+- 1
+GUID: 04697cbc-82e9-46ba-96be-284c5f5f08d1
+Global: false
+IngestBlocked: false
+Labels:
+- High
+- Kubernetes
+LastUpdated: '2025-12-21T19:12:11.572191773-08:00'
+MaxEvents: 10
+Name: Kubernetes Falco Pod Security Event Alert
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: Appname
+    Type: string
+  - Name: parent
+    Type: string
+  - Name: process
+    Type: string
+  - Name: proc_exepath
+    Type: string
+  - Name: command
+    Type: string
+  - Name: Message
+    Type: string
+  - Name: Hostname
+    Type: string
+TargetTag: _alerts
+ThingUUID: 5f4e4fcc-4576-4fd4-8eef-37ad5b5effa6
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

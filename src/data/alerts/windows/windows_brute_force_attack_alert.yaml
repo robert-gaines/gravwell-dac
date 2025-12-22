@@ -1,0 +1,50 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: bafea10e-257f-4f94-8936-f4036444d709
+  Type: flow
+Description: Windows Brute Force Attack Alert
+Disabled: false
+Dispatchers:
+- ID: fd665463-48b0-4531-9232-295fb67a3f36
+  Type: scheduledsearch
+GIDs: []
+GUID: 367193b7-e63e-4796-818c-28b7d1da5274
+Global: false
+IngestBlocked: false
+Labels:
+- High
+- windows
+LastUpdated: '2025-12-21T19:06:04.602711755-08:00'
+MaxEvents: 10
+Name: Windows Brute Force Attack Alert
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: EventID
+    Type: string
+  - Name: SubjectUserName
+    Type: string
+  - Name: Computer
+    Type: string
+  - Name: TimeCreated
+    Type: string
+  - Name: count
+    Type: string
+TargetTag: _alerts
+ThingUUID: 85832657-75cd-48bd-b2e5-a69bc91c7527
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

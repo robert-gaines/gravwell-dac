@@ -1,0 +1,48 @@
+BackfillEnabled: false
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+DebugEvent: null
+DebugMode: false
+DebugOutput: null
+Description: Web Application Tampering
+Disabled: false
+Duration: -300
+ErrorHistory: null
+Flow: ''
+FlowNodeResults: null
+GUID: 9a12455a-aa14-4399-b16e-58083107b45e
+Global: false
+Groups:
+- 1
+ID: 343622226
+Labels:
+- Webserver
+- WebApplication
+- Medium
+- linux
+LastError: ''
+LastRun: '2025-12-21T20:15:00-08:00'
+LastRunDuration: 1166353265
+LastSearchIDs:
+- '41991514227'
+Name: Web Application Tampering
+OneShot: false
+Owner: 1
+PersistentMaps: {}
+Schedule: '*/5 * * * *'
+ScheduledType: search
+Script: ''
+ScriptLanguage: 0
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchSinceLastRun: false
+SearchString: 'tag=syslog src "10.128.40.2" | syslog Message | words "404" | length
+  | stats count(length) as total | eval (total >= 3) '
+Synced: false
+TimeframeOffset: 0
+Timezone: ''
+Updated: '2025-12-21T20:13:02.766527365-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

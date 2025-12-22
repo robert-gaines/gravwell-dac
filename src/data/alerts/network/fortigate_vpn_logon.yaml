@@ -1,0 +1,62 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers:
+- ID: b4add7c8-60c2-46a7-8fdd-357de14c4d96
+  Type: flow
+Description: Fortigate VPN Logon
+Disabled: false
+Dispatchers:
+- ID: 1f1a3f28-649e-4735-8f13-0d50812dc351
+  Type: scheduledsearch
+GIDs: []
+GUID: 7f65c65d-229f-426c-9753-0bba03e4b30b
+Global: false
+IngestBlocked: false
+Labels:
+- High
+- Fortigate
+- Network
+- kit/io.gravwell.syslog
+LastUpdated: '2025-12-21T18:50:54.520307928-08:00'
+MaxEvents: 1
+Name: Fortigate VPN Logon
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: date
+    Type: string
+  - Name: time
+    Type: string
+  - Name: subtype
+    Type: string
+  - Name: logdesc
+    Type: string
+  - Name: action
+    Type: string
+  - Name: tunneltype
+    Type: string
+  - Name: remip
+    Type: string
+  - Name: srccountry
+    Type: string
+  - Name: user
+    Type: string
+  - Name: group
+    Type: string
+TargetTag: _alerts
+ThingUUID: 63895bae-c9d8-4738-9f25-88688bc46f8a
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

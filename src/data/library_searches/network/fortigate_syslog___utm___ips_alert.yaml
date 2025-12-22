@@ -1,0 +1,20 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Description: Fortigate Syslog - UTM - IPS Alert
+GUID: be11de2e-be82-4ad7-9246-90d50a2a5358
+Global: false
+Labels:
+- network
+Metadata:
+  timeframe: null
+Name: Fortigate Syslog - UTM - IPS Alert
+Query: tag=syslog kv -q level type=="utm" subtype=="ips" srcip dstip | eval level
+  == "alert"
+ThingUUID: 4030ea65-f657-4fe3-a281-0ab35736ed10
+UID: 1
+Updated: '2025-12-21T19:46:42.754257621-08:00'
+WriteAccess:
+  GIDs: []
+  Global: false

@@ -1,0 +1,52 @@
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Consumers: []
+Description: Fortigate Administrator Logon
+Disabled: false
+Dispatchers:
+- ID: 6525984e-86e8-4fe9-9da6-9e2aa73c7b47
+  Type: scheduledsearch
+GIDs: []
+GUID: 96265ddb-9eee-4a07-a2b8-bf969d284145
+Global: false
+IngestBlocked: false
+Labels:
+- Fortigate
+- High
+- network
+- kit/io.gravwell.syslog
+LastUpdated: '2025-12-21T19:06:50.920197552-08:00'
+MaxEvents: 5
+Name: Fortigate Administrator Logon
+SaveSearchDuration: 604800
+SaveSearchEnabled: false
+Schemas:
+  ActiveSchema: simple
+  JSON: {}
+  OCSF:
+    EventClass: ''
+    Extensions: []
+    Profiles: []
+  Simple:
+  - Name: date
+    Type: string
+  - Name: time
+    Type: string
+  - Name: srcip
+    Type: string
+  - Name: dstip
+    Type: string
+  - Name: devname
+    Type: string
+  - Name: message
+    Type: string
+TargetTag: _alerts
+ThingUUID: dd7fa0cd-dcc9-409d-8680-15ffce515d43
+UID: 1
+UserMetadata: {}
+WriteAccess:
+  GIDs: []
+  Global: false
+  Share: false

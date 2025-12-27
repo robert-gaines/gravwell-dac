@@ -16,8 +16,7 @@ Labels:
 - Fortigate
 - High
 - network
-- kit/io.gravwell.syslog
-LastUpdated: '2025-12-21T19:06:50.920197552-08:00'
+LastUpdated: '2025-12-27T11:12:43.771549687-08:00'
 MaxEvents: 5
 Name: Fortigate Administrator Logon
 SaveSearchDuration: 604800

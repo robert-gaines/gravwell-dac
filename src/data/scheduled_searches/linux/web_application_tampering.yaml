@@ -23,10 +23,6 @@ Labels:
 - Medium
 - linux
 LastError: ''
-LastRun: '2025-12-21T20:15:00-08:00'
-LastRunDuration: 1166353265
-LastSearchIDs:
-- '41991514227'
 Name: Web Application Tampering
 OneShot: false
 Owner: 1

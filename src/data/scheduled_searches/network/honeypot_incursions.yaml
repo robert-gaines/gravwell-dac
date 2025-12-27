@@ -22,10 +22,6 @@ Labels:
 - High
 - network
 LastError: ''
-LastRun: '2025-12-21T20:15:00-08:00'
-LastRunDuration: 1243196064
-LastSearchIDs:
-- '8326099198'
 Name: Honeypot Incursions
 OneShot: false
 Owner: 1

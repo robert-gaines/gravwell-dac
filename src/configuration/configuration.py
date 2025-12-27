@@ -31,6 +31,10 @@ class Configuration():
                 return configuration_data
 
     def _check_data_directory_structure(self) -> dict:
+        '''
+        Iterates through different categories to ensure the directory
+        structure is in good order for subsequent operations
+        '''
         categories = ['windows',
                       'linux',
                       'network',

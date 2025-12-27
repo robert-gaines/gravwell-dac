@@ -20,10 +20,6 @@ Labels:
 - windows
 - High
 LastError: ''
-LastRun: '2025-12-21T20:15:00-08:00'
-LastRunDuration: 1255518560
-LastSearchIDs:
-- '62107634000'
 Name: Windows Brute Force Logon
 OneShot: false
 Owner: 1

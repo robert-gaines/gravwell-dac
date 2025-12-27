@@ -6,7 +6,7 @@ Can:
 DebugEvent: null
 DebugMode: false
 DebugOutput: null
-Description: Kubernetes - Falco - Pod Security Event
+Description: Kubernetes - Falco - Pod Security Event - Test
 Disabled: false
 Duration: -300
 ErrorHistory: null
@@ -19,10 +19,6 @@ ID: 877406097
 Labels:
 - kubernetes
 LastError: ''
-LastRun: '2025-12-21T20:15:00-08:00'
-LastRunDuration: 1288373740
-LastSearchIDs:
-- '62622302494'
 Name: Kubernetes - Falco - Pod Security Event
 OneShot: false
 Owner: 1
@@ -38,7 +34,7 @@ SearchString: "tag=syslog syslog Appname==\"Falco\" Hostname Message\r\n| kv pro
 Synced: false
 TimeframeOffset: 0
 Timezone: ''
-Updated: '2025-12-21T20:15:18.099499039-08:00'
+Updated: '2025-12-27T10:54:29.222347275-08:00'
 WriteAccess:
   GIDs: []
   Global: false

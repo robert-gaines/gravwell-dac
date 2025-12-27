@@ -18,7 +18,7 @@ IngestBlocked: false
 Labels:
 - High
 - Kubernetes
-LastUpdated: '2025-12-21T19:12:11.572191773-08:00'
+LastUpdated: '2025-12-21T20:15:18.304517677-08:00'
 MaxEvents: 10
 Name: Kubernetes Falco Pod Security Event Alert
 SaveSearchDuration: 604800

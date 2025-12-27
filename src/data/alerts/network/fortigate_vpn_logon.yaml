@@ -18,8 +18,7 @@ Labels:
 - High
 - Fortigate
 - Network
-- kit/io.gravwell.syslog
-LastUpdated: '2025-12-21T18:50:54.520307928-08:00'
+LastUpdated: '2025-12-27T11:12:04.620702354-08:00'
 MaxEvents: 1
 Name: Fortigate VPN Logon
 SaveSearchDuration: 604800

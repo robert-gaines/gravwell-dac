@@ -17,7 +17,7 @@ IngestBlocked: false
 Labels:
 - High
 - windows
-LastUpdated: '2025-12-21T19:06:04.602711755-08:00'
+LastUpdated: '2025-12-27T11:12:19.434509652-08:00'
 MaxEvents: 10
 Name: Windows Brute Force Attack Alert
 SaveSearchDuration: 604800

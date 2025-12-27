@@ -19,8 +19,7 @@ Labels:
 - Storage
 - Medium
 - linux
-- kit/io.gravwell.syslog
-LastUpdated: '2025-12-21T19:05:54.886061301-08:00'
+LastUpdated: '2025-12-27T11:35:10.114066388-08:00'
 MaxEvents: 5
 Name: Network Area Storage Logon Alert
 SaveSearchDuration: 604800

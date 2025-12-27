@@ -19,9 +19,7 @@ Labels:
 - Honeypot
 - High
 - network
-- kit/io.gravwell.syslog
-- kit/io.gravwell.networkenrichment
-LastUpdated: '2025-12-21T19:07:01.281124087-08:00'
+LastUpdated: '2025-12-27T11:12:52.316345793-08:00'
 MaxEvents: 25
 Name: Honeypot Incursion
 SaveSearchDuration: 0

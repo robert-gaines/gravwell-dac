@@ -1,6 +1,7 @@
 import requests
 import urllib3
 import logging
+import uuid
 import yaml
 import os
 
@@ -12,6 +13,9 @@ class Methods():
 
     def __init__(self) -> None:
         self.session = requests.Session()
+
+    def _generate_uuid(self) -> None:
+        return str(uuid.uuid4())
 
     def _format_filename(self, raw_str: str) -> str:
         output = raw_str.lower()
@@ -97,8 +101,8 @@ class Methods():
                              url:str,
                              headers: dict,
                              payload: dict,
-                             verify: bool) -> object:
-        ''' Execute an HTTP PUT Request & return JSON '''
+                             verify: bool) -> int:
+        ''' Execute an HTTP PUT Request '''
         try:
             req = self.session.put(url=url,
                                    headers=headers,
@@ -107,4 +111,31 @@ class Methods():
             return req.status_code
         except requests.exceptions.RequestException as e:
             logger.exception("PUT Request exception raised: {0}".format(e))
+
+    def _execute_post_request(self,
+                             url:str,
+                             headers: dict,
+                             payload: dict,
+                             verify: bool) -> int:
+        ''' Execute an HTTP POST Request '''
+        try:
+            req = self.session.post(url=url,
+                                    headers=headers,
+                                    json=payload,
+                                    verify=verify)
+            return req.status_code
+        except requests.exceptions.RequestException as e:
+            logger.exception("POST Request exception raised: {0}".format(e))
             
+    def _execute_delete_request(self,
+                             url:str,
+                             headers: dict,
+                             verify: bool) -> object:
+        ''' Execute an HTTP DELETE Request '''
+        try:
+            req = self.session.delete(url=url,
+                                      headers=headers,
+                                      verify=verify)
+            return req.status_code
+        except requests.exceptions.RequestException as e:
+            logger.exception("DELETE Request exception raised: {0}".format(e))

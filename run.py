@@ -14,6 +14,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--uuid", action='store_true' , help="UUID Generation for new object")
     parser.add_argument("--token", help="The Gravwell SIEM API Token")
+    parser.add_argument("--lint-directory", help="Lint all files in a directory")
     parser.add_argument("--sync-all", action='store_true', help="Execute all non-destructive methods")
     parser.add_argument("--create-alerts", action='store_true', help="Create alerts")
     parser.add_argument("--update-alerts", action='store_true', help="Update alerts")
@@ -31,6 +32,9 @@ def main():
     parser.add_argument("--list-scheduled-searches", action='store_true', help="List all scheduled searches")
     parser.add_argument("--get-scheduled-searches", action='store_true', help="Export scheduled searches")
     arguments = parser.parse_args()
+    if arguments.lint_directory:
+        methods = Methods()
+        methods._lint_files(arguments.lint_directory)
     if arguments.token:
         configuration = Configuration(arguments.token)
         configuration._initialize()

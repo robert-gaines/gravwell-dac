@@ -1,8 +1,11 @@
+from yamllint.config import YamlLintConfig
+from yamllint import linter
 import requests
 import urllib3
 import logging
 import uuid
 import yaml
+import sys
 import os
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -43,6 +46,43 @@ class Methods():
                 if 'kit' in label:
                     return True
         return False
+
+    def _lint_files(self, path: str) -> None:
+        with open('src/linting/configuration.yaml', 'r') as conf:
+            config_data = yaml.safe_load(conf)
+        config_data = str(config_data)
+        configuration = YamlLintConfig(config_data)
+        # Lint files in the specified directory
+        discrepancies = []
+        for entity in os.listdir(path):
+            for object in os.listdir(f"{path}/{entity}"):
+                if object.endswith('.yaml'):
+                    try:
+                        obj_path = f"{path}/{entity}/{object}"
+                        with open(obj_path, 'r') as file_object:
+                            result = linter.run(file_object, configuration)
+                            for entry in result:
+                                discrepancies.append(
+                                    {
+                                        'File': obj_path,
+                                        'Level': entry.level,
+                                        'Description': entry.desc,
+                                        'Line': entry.line,
+                                        'Column': entry.column,
+                                        'Rule': entry.rule
+                                    }
+                                )
+                    except Exception as e:
+                        logging.exception("Exception raised: {0}".format(e))
+        if not discrepancies:
+            logging.info("All YAML file are valid")
+        else:
+            logging.info("Invalid YAML files located")
+            for entry in discrepancies:
+                for item in entry.keys():
+                    logging.info(f"{item} -> {entry[item]}")
+                print()
+            sys.exit(1)
 
     def _purge_directory(self, path: str) -> None:
         for entity in os.listdir(path):

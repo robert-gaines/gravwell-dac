@@ -1,2 +1,2 @@
-# gravwell-siem-config
-Gravwell SIEM Configuration Management Repository
+# Detection as Code (DaC) for the Gravwell SIEM
+

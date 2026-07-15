@@ -1,43 +1,44 @@
+---
+Synced: false
+ID: 1668623174
+GUID: 90723cc5-4e1a-4633-8493-99088027739d
+Groups:
+  - 1
+Global: false
+WriteAccess:
+  Global: false
+  GIDs: []
+Name: Honeypot Incursions
+Description: Honeypot Incursion
+Labels:
+  - Honeypot
+  - High
+  - network
+Owner: 1
+Schedule: '*/5 * * * *'
+Timezone: ''
+Updated: '2026-07-05T15:06:10.295667119-07:00'
+Disabled: false
+OneShot: false
+DebugMode: false
+DebugEvent: null
 BackfillEnabled: true
+ScheduledType: search
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchString: "tag=syslog syslog Message \r\n| words \"permit-wan-to-honeypots\" \r\
+  \n| kv srcip srcport dstip dstport srccountry action msg"
+Duration: -300
+SearchSinceLastRun: false
+TimeframeOffset: 0
+Script: ''
+ScriptLanguage: 0
+Flow: ''
+FlowNodeResults: null
+PersistentMaps: {}
+LastError: ''
+ErrorHistory: null
+DebugOutput: null
 Can:
   Delete: true
   Modify: true
   Share: true
-DebugEvent: null
-DebugMode: false
-DebugOutput: null
-Description: Honeypot Incursion
-Disabled: false
-Duration: -300
-ErrorHistory: null
-Flow: ''
-FlowNodeResults: null
-GUID: 90723cc5-4e1a-4633-8493-99088027739d
-Global: false
-Groups:
-- 1
-ID: 1668623174
-Labels:
-- Honeypot
-- High
-- network
-LastError: ''
-Name: Honeypot Incursions
-OneShot: false
-Owner: 1
-PersistentMaps: {}
-Schedule: '*/5 * * * *'
-ScheduledType: search
-Script: ''
-ScriptLanguage: 0
-SearchReference: 00000000-0000-0000-0000-000000000000
-SearchSinceLastRun: false
-SearchString: "tag=syslog syslog Message \r\n| words \"permit-wan-to-honeypots\" \r\
-  \n| kv srcip srcport dstip dstport srccountry action msg"
-Synced: false
-TimeframeOffset: 0
-Timezone: ''
-Updated: '2025-12-21T20:13:12.773637231-08:00'
-WriteAccess:
-  GIDs: []
-  Global: false

@@ -1,15 +1,12 @@
-Can:
-  Delete: true
-  Modify: true
-  Share: true
-Description: Windows - Admin Logon
-GUID: 5f87f3ca-c8c8-458a-b297-06e94c0d0aa3
+---
+ThingUUID: f89fe557-710d-4f65-a887-d714f7fc799e
+UID: 1
 Global: true
-Labels:
-- windows
-Metadata:
-  timeframe: null
+WriteAccess:
+  Global: true
+  GIDs: []
 Name: Windows Admin Logon
+Description: Windows - Admin Logon
 Query: 'tag=windows winlog EventID == 4672
 
   | winlog System.SubjectUserName !~ "$"
@@ -23,9 +20,13 @@ Query: 'tag=windows winlog EventID == 4672
   | winlog System.SubjectUserName != "NETWORK SERVICE"
 
   '
-ThingUUID: f89fe557-710d-4f65-a887-d714f7fc799e
-UID: 1
-Updated: '2025-12-27T20:08:52.359857622-08:00'
-WriteAccess:
-  GIDs: []
-  Global: true
+GUID: 5f87f3ca-c8c8-458a-b297-06e94c0d0aa3
+Labels:
+  - windows
+Metadata:
+  timeframe: null
+Can:
+  Delete: true
+  Modify: true
+  Share: true
+Updated: '2026-07-05T15:06:15.231581768-07:00'

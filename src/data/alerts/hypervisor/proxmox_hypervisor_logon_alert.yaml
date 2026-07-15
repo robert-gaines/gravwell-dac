@@ -4,22 +4,22 @@ Can:
   Modify: true
   Share: true
 Consumers:
-- ID: b1f154d1-bba4-4b76-b521-96159f2d4736
-  Type: flow
+  - ID: b1f154d1-bba4-4b76-b521-96159f2d4736
+    Type: flow
 Description: Proxmox Hypervisor Logon Alert
 Disabled: false
 Dispatchers:
-- ID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
-  Type: scheduledsearch
+  - ID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
+    Type: scheduledsearch
 GIDs: []
 GUID: d0404f84-fb6c-4159-af3a-8b2a22d6b02f
 Global: false
 IngestBlocked: false
 Labels:
-- Proxmox
-- High
-- Hypervisor
-LastUpdated: '2025-12-27T11:12:14.850514682-08:00'
+  - Proxmox
+  - High
+  - Hypervisor
+LastUpdated: '2026-07-05T15:06:16.104198692-07:00'
 MaxEvents: 1
 Name: Proxmox Hypervisor Logon Alert
 SaveSearchDuration: 604800
@@ -32,8 +32,8 @@ Schemas:
     Extensions: []
     Profiles: []
   Simple:
-  - Name: Message
-    Type: string
+    - Name: Message
+      Type: string
 TargetTag: _alerts
 ThingUUID: 815fd61b-9fb7-454c-bafe-1ad0a8486f5a
 UID: 1

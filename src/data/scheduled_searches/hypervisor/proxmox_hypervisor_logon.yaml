@@ -1,42 +1,43 @@
+---
+Synced: false
+ID: 1482408382
+GUID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
+Groups: []
+Global: false
+WriteAccess:
+  Global: false
+  GIDs: []
+Name: Proxmox Hypervisor Logon
+Description: Proxmox Hypervisor Logon
+Labels:
+  - High
+  - Proxmox
+  - hypervisor
+Owner: 1
+Schedule: '*/15 * * * *'
+Timezone: ''
+Updated: '2026-07-05T15:06:10.693742075-07:00'
+Disabled: false
+OneShot: false
+DebugMode: false
+DebugEvent: null
 BackfillEnabled: false
+ScheduledType: search
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchString: "tag=syslog syslog Message \r\n| words \"pvedaemon\"\r\n| words \"successful\"\
+  \ \r\n| words \"auth\"\r\n| fields Message"
+Duration: -900
+SearchSinceLastRun: false
+TimeframeOffset: 0
+Script: ''
+ScriptLanguage: 0
+Flow: ''
+FlowNodeResults: null
+PersistentMaps: {}
+LastError: ''
+ErrorHistory: null
+DebugOutput: null
 Can:
   Delete: true
   Modify: true
   Share: true
-DebugEvent: null
-DebugMode: false
-DebugOutput: null
-Description: Proxmox Hypervisor Logon
-Disabled: false
-Duration: -900
-ErrorHistory: null
-Flow: ''
-FlowNodeResults: null
-GUID: 4eb72445-83f4-457c-9b98-d8d9b63f9598
-Global: false
-Groups: []
-ID: 1482408382
-Labels:
-- High
-- Proxmox
-- hypervisor
-LastError: ''
-Name: Proxmox Hypervisor Logon
-OneShot: false
-Owner: 1
-PersistentMaps: {}
-Schedule: '*/15 * * * *'
-ScheduledType: search
-Script: ''
-ScriptLanguage: 0
-SearchReference: 00000000-0000-0000-0000-000000000000
-SearchSinceLastRun: false
-SearchString: "tag=syslog syslog Message \r\n| words \"pvedaemon\"\r\n| words \"successful\"\
-  \ \r\n| words \"auth\"\r\n| fields Message"
-Synced: false
-TimeframeOffset: 0
-Timezone: ''
-Updated: '2025-12-27T11:07:15.180908682-08:00'
-WriteAccess:
-  GIDs: []
-  Global: false

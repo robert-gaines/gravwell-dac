@@ -1,25 +1,26 @@
+---
 Can:
   Delete: true
   Modify: true
   Share: true
 Consumers:
-- ID: cd029062-08f1-4ec9-a6d5-a5e1ec95de06
-  Type: flow
+  - ID: cd029062-08f1-4ec9-a6d5-a5e1ec95de06
+    Type: flow
 Description: Web Application Tampering
 Disabled: false
 Dispatchers:
-- ID: 9a12455a-aa14-4399-b16e-58083107b45e
-  Type: scheduledsearch
+  - ID: 9a12455a-aa14-4399-b16e-58083107b45e
+    Type: scheduledsearch
 GIDs: []
 GUID: ceea5f6e-79e0-4942-bf38-0818384cfd9f
 Global: false
 IngestBlocked: false
 Labels:
-- Webserver
-- WebApplication
-- Medium
-- linux
-LastUpdated: '2025-12-27T11:12:31.530354956-08:00'
+  - Webserver
+  - WebApplication
+  - Medium
+  - linux
+LastUpdated: '2026-07-05T15:06:16.140309009-07:00'
 MaxEvents: 3
 Name: Web Application Tampering
 SaveSearchDuration: 604800
@@ -32,8 +33,8 @@ Schemas:
     Extensions: []
     Profiles: []
   Simple:
-  - Name: Message
-    Type: string
+    - Name: Message
+      Type: string
 TargetTag: _alerts
 ThingUUID: b0e206da-8c2a-4f76-8b32-e1de8b9fa586
 UID: 1

@@ -1,40 +1,41 @@
+---
+Synced: false
+ID: 877406097
+GUID: 00fb1ba0-439c-41f0-bb9b-4e14cfb8c3ea
+Groups: []
+Global: false
+WriteAccess:
+  Global: false
+  GIDs: []
+Name: Kubernetes - Falco - Pod Security Event
+Description: Kubernetes - Falco - Pod Security Event - Test
+Labels:
+  - kubernetes
+Owner: 1
+Schedule: '*/5 * * * *'
+Timezone: ''
+Updated: '2026-07-05T15:06:10.676817501-07:00'
+Disabled: false
+OneShot: false
+DebugMode: false
+DebugEvent: null
 BackfillEnabled: true
+ScheduledType: search
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchString: "tag=syslog syslog Appname==\"Falco\" Hostname Message\r\n| kv process\
+  \ proc_cmdline proc_exepath parent command"
+Duration: -300
+SearchSinceLastRun: false
+TimeframeOffset: 0
+Script: ''
+ScriptLanguage: 0
+Flow: ''
+FlowNodeResults: null
+PersistentMaps: {}
+LastError: ''
+ErrorHistory: null
+DebugOutput: null
 Can:
   Delete: true
   Modify: true
   Share: true
-DebugEvent: null
-DebugMode: false
-DebugOutput: null
-Description: Kubernetes - Falco - Pod Security Event - Test
-Disabled: false
-Duration: -300
-ErrorHistory: null
-Flow: ''
-FlowNodeResults: null
-GUID: 00fb1ba0-439c-41f0-bb9b-4e14cfb8c3ea
-Global: false
-Groups: []
-ID: 877406097
-Labels:
-- kubernetes
-LastError: ''
-Name: Kubernetes - Falco - Pod Security Event
-OneShot: false
-Owner: 1
-PersistentMaps: {}
-Schedule: '*/5 * * * *'
-ScheduledType: search
-Script: ''
-ScriptLanguage: 0
-SearchReference: 00000000-0000-0000-0000-000000000000
-SearchSinceLastRun: false
-SearchString: "tag=syslog syslog Appname==\"Falco\" Hostname Message\r\n| kv process\
-  \ proc_cmdline proc_exepath parent command"
-Synced: false
-TimeframeOffset: 0
-Timezone: ''
-Updated: '2025-12-27T10:54:29.222347275-08:00'
-WriteAccess:
-  GIDs: []
-  Global: false

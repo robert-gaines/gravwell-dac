@@ -1,41 +1,42 @@
+---
+Synced: false
+ID: 1321975504
+GUID: fd665463-48b0-4531-9232-295fb67a3f36
+Groups: []
+Global: false
+WriteAccess:
+  Global: false
+  GIDs: []
+Name: Windows Brute Force Logon
+Description: Windows Brute Force Logon
+Labels:
+  - windows
+  - High
+Owner: 1
+Schedule: '*/5 * * * *'
+Timezone: ''
+Updated: '2026-07-05T15:06:10.699405209-07:00'
+Disabled: false
+OneShot: false
+DebugMode: false
+DebugEvent: null
 BackfillEnabled: true
+ScheduledType: search
+SearchReference: 00000000-0000-0000-0000-000000000000
+SearchString: "tag=windows winlog EventID==4625 System.SubjectUserName Computer TimeCreated\r\
+  \n| stats count by EventID\r\n| eval (count >= 3)"
+Duration: -300
+SearchSinceLastRun: false
+TimeframeOffset: 0
+Script: ''
+ScriptLanguage: 0
+Flow: ''
+FlowNodeResults: null
+PersistentMaps: {}
+LastError: ''
+ErrorHistory: null
+DebugOutput: null
 Can:
   Delete: true
   Modify: true
   Share: true
-DebugEvent: null
-DebugMode: false
-DebugOutput: null
-Description: Windows Brute Force Logon
-Disabled: false
-Duration: -300
-ErrorHistory: null
-Flow: ''
-FlowNodeResults: null
-GUID: fd665463-48b0-4531-9232-295fb67a3f36
-Global: false
-Groups: []
-ID: 1321975504
-Labels:
-- windows
-- High
-LastError: ''
-Name: Windows Brute Force Logon
-OneShot: false
-Owner: 1
-PersistentMaps: {}
-Schedule: '*/5 * * * *'
-ScheduledType: search
-Script: ''
-ScriptLanguage: 0
-SearchReference: 00000000-0000-0000-0000-000000000000
-SearchSinceLastRun: false
-SearchString: "tag=windows winlog EventID==4625 System.SubjectUserName Computer TimeCreated\r\
-  \n| stats count by EventID\r\n| eval (count >= 3)"
-Synced: false
-TimeframeOffset: 0
-Timezone: ''
-Updated: '2025-12-21T20:17:11.663331672-08:00'
-WriteAccess:
-  GIDs: []
-  Global: false

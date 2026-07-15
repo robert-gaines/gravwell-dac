@@ -12,12 +12,34 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 logger = logging.getLogger()
 
+
+class YamlExporter:
+
+    class IndentExporter(yaml.SafeDumper):
+        def increase_indent(self, flow=False, indentless=False):
+            return super(YamlExporter.IndentExporter, self).increase_indent(flow,  # noqa
+                                                                            False) # noqa
+
+    def export_to_file(self, output_path: str, data: dict) -> str:
+        with open(output_path, 'w', encoding='utf-8') as fobj:
+            fobj.write('---\n')
+            yaml.dump(
+                data,
+                fobj,
+                sort_keys=False,
+                default_flow_style=False,
+                Dumper=YamlExporter.IndentExporter,
+            )
+        return output_path
+
+
 class Methods():
 
     def __init__(self) -> None:
         self.session = requests.Session()
 
-    def _generate_uuid(self) -> None:
+    def _generate_uuid(self) -> str:
+        ''' Generate a random UUID '''
         return str(uuid.uuid4())
 
     def _format_filename(self, raw_str: str) -> str:
@@ -28,15 +50,15 @@ class Methods():
         output += '.yaml'
         return output
 
-    def _check_directory_path(self, path: str) -> None:
+    def _check_directory_path(self, path: str) -> bool:
         ''' Checks for the validity of a given path '''
         if os.path.exists(path):
             return True
         else:
             return False
-    
+
     def _check_for_kit_sponsored_entity(self, labels: list) -> bool:
-        ''' 
+        '''
         Check for kit affiliated objects.
         Given that kit objects may have other dependencies, 
         we want to avoid modifying these objects 
@@ -48,7 +70,7 @@ class Methods():
         return False
 
     def _lint_files(self, path: str) -> None:
-        with open('src/linting/configuration.yaml', 'r') as conf:
+        with open('src/configuration/linting/configuration.yaml', 'r') as conf:
             config_data = yaml.safe_load(conf)
         config_data = str(config_data)
         configuration = YamlLintConfig(config_data)
@@ -75,7 +97,7 @@ class Methods():
                     except Exception as e:
                         logging.exception("Exception raised: {0}".format(e))
         if not discrepancies:
-            logging.info("All YAML file are valid")
+            logging.info("All YAML files are valid")
         else:
             logging.info("Invalid YAML files located")
             for entry in discrepancies:
@@ -100,8 +122,8 @@ class Methods():
 
     def _export_data_to_file(self, output_path: str, data: dict) -> str:
         ''' Export dictionary formatted data to a yaml file '''
-        with open(output_path, 'w') as fobj:
-            yaml.safe_dump(data, fobj)        
+        exporter = YamlExporter()
+        return exporter.export_to_file(output_path, data)
 
     def _categorize_entity(self, labels: list) -> str:
         ''' Using labels, categorize the entity '''
@@ -122,7 +144,7 @@ class Methods():
         return scheduled_search_object
 
     def _execute_get_request(self,
-                             url:str,
+                             url: str,
                              headers: dict,
                              verify: bool) -> object:
         ''' Execute an HTTP GET Request & return JSON '''
@@ -138,7 +160,7 @@ class Methods():
             logger.exception("GET Request exception raised: {0}".format(e))
 
     def _execute_put_request(self,
-                             url:str,
+                             url: str,
                              headers: dict,
                              payload: dict,
                              verify: bool) -> int:
@@ -153,10 +175,10 @@ class Methods():
             logger.exception("PUT Request exception raised: {0}".format(e))
 
     def _execute_post_request(self,
-                             url:str,
-                             headers: dict,
-                             payload: dict,
-                             verify: bool) -> int:
+                              url: str,
+                              headers: dict,
+                              payload: dict,
+                              verify: bool) -> int:
         ''' Execute an HTTP POST Request '''
         try:
             req = self.session.post(url=url,
@@ -166,11 +188,11 @@ class Methods():
             return req.status_code
         except requests.exceptions.RequestException as e:
             logger.exception("POST Request exception raised: {0}".format(e))
-            
+ 
     def _execute_delete_request(self,
-                             url:str,
-                             headers: dict,
-                             verify: bool) -> object:
+                                url: str,
+                                headers: dict,
+                                verify: bool) -> object:
         ''' Execute an HTTP DELETE Request '''
         try:
             req = self.session.delete(url=url,

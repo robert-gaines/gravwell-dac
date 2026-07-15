@@ -1,25 +1,26 @@
+---
 Can:
   Delete: true
   Modify: true
   Share: true
 Consumers:
-- ID: 8868720c-afbe-422c-ae94-0e19d0db06c5
-  Type: flow
+  - ID: 8868720c-afbe-422c-ae94-0e19d0db06c5
+    Type: flow
 Description: Network Area Storage Logon Alert
 Disabled: false
 Dispatchers:
-- ID: 6e11ebd6-ec83-46cc-9005-0f5beba80fa5
-  Type: scheduledsearch
+  - ID: 6e11ebd6-ec83-46cc-9005-0f5beba80fa5
+    Type: scheduledsearch
 GIDs:
-- 1
+  - 1
 GUID: 38f7e076-9a13-4724-b825-1f2b746061b9
 Global: false
 IngestBlocked: false
 Labels:
-- Storage
-- Medium
-- linux
-LastUpdated: '2025-12-27T11:35:10.114066388-08:00'
+  - Storage
+  - Medium
+  - linux
+LastUpdated: '2026-07-05T15:06:16.128514729-07:00'
 MaxEvents: 5
 Name: Network Area Storage Logon Alert
 SaveSearchDuration: 604800
@@ -32,8 +33,8 @@ Schemas:
     Extensions: []
     Profiles: []
   Simple:
-  - Name: Message
-    Type: string
+    - Name: Message
+      Type: string
 TargetTag: _alerts
 ThingUUID: 9be16ffb-db3f-4732-a6c1-b272f220af4c
 UID: 1

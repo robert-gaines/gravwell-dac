@@ -5,17 +5,18 @@ import os
 
 logger = logging.getLogger()
 
+
 class Searches(Methods):
 
     def __init__(self, headers: dict, url: str) -> None:
         self.headers = headers
         self.url = url
         super().__init__()
-    
+
     def _get_library_searches(self) -> None:
         ''' Retrieve current Library Searches '''
         url = f"{self.url}/library"
-        library_search_path= "src/data/library_searches/"
+        library_search_path = "src/data/library_searches/"
         super()._purge_directory(library_search_path)
         searches = super()._execute_get_request(url, self.headers, False)
         if super()._check_directory_path(library_search_path):
@@ -24,7 +25,7 @@ class Searches(Methods):
                     if search['Labels']:
                         category = super()._categorize_entity(search['Labels'])
                         filename = super()._format_filename(search['Name'])
-                        output_path = f"{library_search_path}{category}/{filename}"
+                        output_path = f"{library_search_path}{category}/{filename}" # noqa
                         super()._export_data_to_file(output_path, search)
 
     def _check_for_library_search_changes(self) -> None:
@@ -127,7 +128,7 @@ class Searches(Methods):
         local_objects = {}
         remote_objects = {}
         url = f"{self.url}/scheduledsearches"
-        search_path= "src/data/scheduled_searches/"
+        search_path = "src/data/scheduled_searches/"
         for search in os.listdir(search_path):
             for object in os.listdir(f"{search_path}/{search}"):
                 with open(f"{search_path}/{search}/{object}", 'r') as file_object:
@@ -147,7 +148,10 @@ class Searches(Methods):
                     deltas = super()._check_for_deltas(remote_object, local_object)
                     if deltas:
                         url = f"{url}/{entry}"
-                        update = super()._execute_put_request(url, self.headers, local_object, False)
+                        update = super()._execute_put_request(url,
+                                                              self.headers,
+                                                              local_object,
+                                                              False)
                         if update == 200:
                             logging.info("Update operation succeeded for: {0}".format(entry))
                             self._get_scheduled_searches()

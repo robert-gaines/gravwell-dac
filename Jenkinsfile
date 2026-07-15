@@ -23,16 +23,20 @@ pipeline {
         stage('Lint Definition Files') {
             steps {
                     script {
-                        result = sh(script:"""
+                        def LINTER_RESULT = sh(script:"""
                                             python3 -m venv venv
                                             . venv/bin/activate
                                             python3 -m pip install -r requirements.txt
                                             python3 run.py --lint-all-files
-                                            """, returnstdOut: true) 
-                    }  
+                                            """, returnStatus: true)
+                        env.LINTER_RESULT = LINTER_RESULT
+                        if(env.LINTER_RESULT != 0) {
+                            error("Defintion file linting failed")
+                        }
+                    }
             }
         }
-
+        
         stage('Synchronize Configuration Data') {
             steps {
                 script {

@@ -4,6 +4,7 @@ from src.methods.methods import Methods
 from src.methods.alerts import Alerts
 import argparse
 import logging
+import sys
 
 logger = logging.basicConfig(level=logging.INFO,
                              format='[%(asctime)s][%(levelname)s][%(message)s]') # noqa
@@ -80,7 +81,10 @@ def main():
     if arguments.lint_directory:
         methods = Methods()
         result = methods._lint_files(arguments.lint_directory)
-        print(str(result))
+        if result:
+            sys.exit(0)
+        else:
+            sys.exit(1)
     if arguments.lint_all_files:
         result = False
         directories = [
@@ -91,7 +95,10 @@ def main():
         methods = Methods()
         for directory in directories:
             result = methods._lint_files(directory)
-        print(str(result))
+        if result:
+            sys.exit(0)
+        else:
+            sys.exit(1)
     if arguments.token:
         configuration = Configuration(arguments.token)
         configuration._initialize()

@@ -79,8 +79,10 @@ def main():
     arguments = parser.parse_args()
     if arguments.lint_directory:
         methods = Methods()
-        methods._lint_files(arguments.lint_directory)
+        result = methods._lint_files(arguments.lint_directory)
+        return result
     if arguments.lint_all_files:
+        result = False
         directories = [
             'src/data/alerts',
             'src/data/library_searches',
@@ -88,7 +90,8 @@ def main():
         ]
         methods = Methods()
         for directory in directories:
-            methods._lint_files(directory)
+            result = methods._lint_files(directory)
+        return result
     if arguments.token:
         configuration = Configuration(arguments.token)
         configuration._initialize()

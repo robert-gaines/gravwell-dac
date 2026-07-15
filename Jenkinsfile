@@ -1,6 +1,6 @@
 pipeline {
     agent {
-         label 'res-phy-prd-rpi-1'  
+         label 'res-vrt-prd-cdr'  
     }
 
     environment {
@@ -15,8 +15,21 @@ pipeline {
                 git(
                     credentialsId: "${env.GIT_CREDENTIALS_ID}",
                     url: "${env.GIT_REPOSITORY_URL}",
-                    branch: "${env.GIT_BRANCH}"
+                    branch: "${env.GIT_BRANCH}",
                 )
+            }
+        }
+
+        stage('Lint Definition Files') {
+            steps {
+                    script {
+                        result = sh(script:"""
+                                            python3 -m venv venv
+                                            . venv/bin/activate
+                                            python3 -m pip install -r requirements.txt
+                                            python3 run.py --lint-all-files
+                                            """, returnstdOut: true) 
+                    }  
             }
         }
 

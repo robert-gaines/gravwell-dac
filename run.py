@@ -80,7 +80,7 @@ def main():
     if arguments.lint_directory:
         methods = Methods()
         result = methods._lint_files(arguments.lint_directory)
-        return result
+        print(str(result))
     if arguments.lint_all_files:
         result = False
         directories = [
@@ -91,7 +91,7 @@ def main():
         methods = Methods()
         for directory in directories:
             result = methods._lint_files(directory)
-        return result
+        print(str(result))
     if arguments.token:
         configuration = Configuration(arguments.token)
         configuration._initialize()

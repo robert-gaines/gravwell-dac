@@ -30,7 +30,10 @@ pipeline {
                                             python3 run.py --lint-all-files
                                             """, returnStatus: true)
                         env.LINTER_RESULT = LINTER_RESULT
-                        if(env.LINTER_RESULT != 0) {
+                        if(env.LINTER_RESULT == '0') {
+                            echo "Defintion file linting passed"
+                        }
+                        if(env.LINTER_RESULT == '1') {
                             error("Defintion file linting failed")
                         }
                     }

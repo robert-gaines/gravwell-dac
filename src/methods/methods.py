@@ -5,7 +5,6 @@ import urllib3
 import logging
 import uuid
 import yaml
-import sys
 import os
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -17,10 +16,12 @@ class YamlExporter:
 
     class IndentExporter(yaml.SafeDumper):
         def increase_indent(self, flow=False, indentless=False):
+            '''Optimize yaml structure to appease the linter'''
             return super(YamlExporter.IndentExporter, self).increase_indent(flow,  # noqa
                                                                             False) # noqa
 
     def export_to_file(self, output_path: str, data: dict) -> str:
+        ''' Export the query or alert to a yaml file '''
         with open(output_path, 'w', encoding='utf-8') as fobj:
             fobj.write('---\n')
             yaml.dump(
@@ -34,6 +35,7 @@ class YamlExporter:
 
 
 class Methods():
+    '''General purpose methods'''
 
     def __init__(self) -> None:
         self.session = requests.Session()
@@ -43,6 +45,7 @@ class Methods():
         return str(uuid.uuid4())
 
     def _format_filename(self, raw_str: str) -> str:
+        ''' Remove irregularities from the filename '''
         output = raw_str.lower()
         output = output.replace(' ', '_')
         output = output.replace('-', '_')
@@ -60,8 +63,8 @@ class Methods():
     def _check_for_kit_sponsored_entity(self, labels: list) -> bool:
         '''
         Check for kit affiliated objects.
-        Given that kit objects may have other dependencies, 
-        we want to avoid modifying these objects 
+        Given that kit objects may have other dependencies,
+        we want to avoid modifying these objects
         '''
         if labels:
             for label in labels:
@@ -69,7 +72,8 @@ class Methods():
                     return True
         return False
 
-    def _lint_files(self, path: str) -> None:
+    def _lint_files(self, path: str) -> bool:
+        ''' Apply YAML linting to files in a directory '''
         with open('src/configuration/linting/configuration.yaml', 'r') as conf:
             config_data = yaml.safe_load(conf)
         config_data = str(config_data)
@@ -96,17 +100,20 @@ class Methods():
                                 )
                     except Exception as e:
                         logging.exception("Exception raised: {0}".format(e))
+                        return False
         if not discrepancies:
             logging.info("All YAML files are valid")
+            return True
         else:
             logging.info("Invalid YAML files located")
             for entry in discrepancies:
                 for item in entry.keys():
                     logging.info(f"{item} -> {entry[item]}")
                 print()
-            sys.exit(1)
+            return False
 
     def _purge_directory(self, path: str) -> None:
+        ''' Remove all YAML files in a given directory '''
         for entity in os.listdir(path):
             for object in os.listdir(f"{path}/{entity}"):
                 if object.endswith('.yaml'):
@@ -116,6 +123,7 @@ class Methods():
                         logging.exception("Exception raised: {0}".format(e))
 
     def _check_for_deltas(self, remote_obj: dict, local_obj: dict) -> bool:
+        ''' Perform a dictionary comparison '''
         if local_obj != remote_obj:
             return True
         return False
@@ -136,8 +144,11 @@ class Methods():
             if label.lower() in categories:
                 index = categories.index(label.lower())
                 return categories[index]
+        return ''
 
-    def _delete_variable_search_fields(self, scheduled_search_object: dict) -> dict:
+    def _delete_variable_search_fields(self,
+                                       scheduled_search_object: dict) -> dict: # noqa
+        ''' Delete fields with no relevance to configuration '''
         del scheduled_search_object['LastRun']
         del scheduled_search_object['LastRunDuration']
         del scheduled_search_object['LastSearchIDs']
@@ -173,6 +184,7 @@ class Methods():
             return req.status_code
         except requests.exceptions.RequestException as e:
             logger.exception("PUT Request exception raised: {0}".format(e))
+            return 400
 
     def _execute_post_request(self,
                               url: str,
@@ -188,11 +200,12 @@ class Methods():
             return req.status_code
         except requests.exceptions.RequestException as e:
             logger.exception("POST Request exception raised: {0}".format(e))
- 
+            return 400
+
     def _execute_delete_request(self,
                                 url: str,
                                 headers: dict,
-                                verify: bool) -> object:
+                                verify: bool) -> int:
         ''' Execute an HTTP DELETE Request '''
         try:
             req = self.session.delete(url=url,
@@ -201,3 +214,4 @@ class Methods():
             return req.status_code
         except requests.exceptions.RequestException as e:
             logger.exception("DELETE Request exception raised: {0}".format(e))
+            return 400

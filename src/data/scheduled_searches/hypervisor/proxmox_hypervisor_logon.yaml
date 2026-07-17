@@ -24,7 +24,7 @@ DebugEvent: null
 BackfillEnabled: false
 ScheduledType: search
 SearchReference: 00000000-0000-0000-0000-000000000000
-SearchString: "tag=syslog syslog Message \r\n| words \"pvedaemon\"\r\n| words \"successful\"\
+SearchString: "tag=syslog + syslog Message \r\n| words \"pvedaemon\"\r\n| words \"successful\"\
   \ \r\n| words \"auth\"\r\n| fields Message"
 Duration: -900
 SearchSinceLastRun: false

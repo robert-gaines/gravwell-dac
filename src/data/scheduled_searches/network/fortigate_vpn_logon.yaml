@@ -17,7 +17,7 @@ Labels:
 Owner: 1
 Schedule: '*/5 * * * *'
 Timezone: ''
-Updated: '2026-07-14T19:50:01.874942638-07:00'
+Updated: '2026-07-17T11:49:23.20215384-07:00'
 Disabled: false
 OneShot: false
 DebugMode: false
@@ -25,10 +25,8 @@ DebugEvent: null
 BackfillEnabled: true
 ScheduledType: search
 SearchReference: 00000000-0000-0000-0000-000000000000
-SearchString: '"tag=syslog kv -q date time subtype==\"vpn\" logdesc action tunneltype\
-  \ remip srccountry user group |\r\neval (action==\"tunnel-up\")"
-
-  '
+SearchString: tag=syslog kv -q date time subtype=="vpn" logdesc action tunneltype
+  remip srccountry user group | eval (action=="tunnel-up")
 Duration: -300
 SearchSinceLastRun: false
 TimeframeOffset: 0

@@ -77,6 +77,9 @@ def main():
     parser.add_argument("--get-scheduled-searches",
                         action='store_true',
                         help="Export scheduled searches")
+    parser.add_argument("--validate-queries",
+                        action='store_true',
+                        help="Validate query syntax")
     arguments = parser.parse_args()
     if arguments.lint_directory:
         methods = Methods()
@@ -138,6 +141,9 @@ def main():
             Searches(configuration.headers,
                      configuration.url)._delete_scheduled_search(
                          arguments.delete_scheduled_search)
+        if arguments.validate_queries:
+            Searches(configuration.headers,
+                     configuration.url)._validate_queries()
         if arguments.create_alerts:
             Alerts(configuration.headers,
                    configuration.url)._check_for_new_alerts()

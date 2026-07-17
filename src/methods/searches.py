@@ -1,6 +1,7 @@
 from src.methods.methods import Methods
 import logging
 import yaml
+import sys
 import os
 
 logger = logging.getLogger()
@@ -232,3 +233,43 @@ class Searches(Methods):
             self._get_scheduled_searches()
         else:
             logging.error(f"Scheduled search removal failed for: {scheduled_search_id}") # noqa
+
+    def _validate_query(self, query: str) -> bool:
+        payload = {'searchString': query}
+        url = f"{self.url}/parse"
+        result = super()._execute_post_request(url,
+                                               self.headers,
+                                               payload,
+                                               False)
+        if result == 200:
+            return True
+        else:
+            return False
+
+    def _validate_queries(self) -> None:
+        ''' Iterate through queries and validate syntax vs. the API '''
+        results = {}
+        paths = ["src/data/scheduled_searches/",
+                 "src/data/library_searches/"]
+        for directory in paths:
+            try:
+                for subordinate_directory in os.listdir(directory):
+                    for object in os.listdir(f"{directory}{subordinate_directory}"): # noqa
+                        path = f"{directory}{subordinate_directory}/{object}"
+                        with open(path, 'r') as fobj:
+                            data = yaml.safe_load(fobj)
+                            results[data['GUID']] = False
+                            if 'Query' in data.keys():
+                                query = data['Query']
+                            if 'SearchString' in data.keys():
+                                query = data['SearchString']
+                            result = self._validate_query(query)  # type: ignore # noqa
+                            results[data['GUID']] = result
+            except Exception as e:
+                logging.exception(f"Exception raised: {e}")
+        for record in results.keys():
+            logging.info(f"{record}:{results[record]}")
+        if False not in list(results.values()):
+            sys.exit(0)
+        if False in list(results.values()):
+            sys.exit(1)

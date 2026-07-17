@@ -16,7 +16,7 @@ Labels:
 Owner: 1
 Schedule: '*/15 * * * *'
 Timezone: ''
-Updated: '2026-07-05T15:06:10.693742075-07:00'
+Updated: '2026-07-17T12:42:20.917020773-07:00'
 Disabled: false
 OneShot: false
 DebugMode: false
@@ -24,7 +24,8 @@ DebugEvent: null
 BackfillEnabled: false
 ScheduledType: search
 SearchReference: 00000000-0000-0000-0000-000000000000
-SearchString: "tag=syslog syslog Message | words pvedaemon | words successful | words auth | fields Message"
+SearchString: tag=syslog syslog Message | words pvedaemon | words successful | words
+  auth | fields Message
 Duration: -900
 SearchSinceLastRun: false
 TimeframeOffset: 0

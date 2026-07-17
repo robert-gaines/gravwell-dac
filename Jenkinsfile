@@ -20,13 +20,24 @@ pipeline {
             }
         }
 
+        stage('Install Requirements') {
+            steps {
+                    script {
+                        sh(script:"""
+                                  python3 -m venv venv
+                                  . venv/bin/activate
+                                  python3 -m pip install -r requirements.txt
+                                  """)
+                    }
+              }
+        }
+
         stage('Lint Definition Files') {
             steps {
                     script {
                         def LINTER_RESULT = sh(script:"""
                                             python3 -m venv venv
                                             . venv/bin/activate
-                                            python3 -m pip install -r requirements.txt
                                             python3 run.py --lint-all-files
                                             """, returnStatus: true)
                         env.LINTER_RESULT = LINTER_RESULT
@@ -36,6 +47,28 @@ pipeline {
                         if(env.LINTER_RESULT == '1') {
                             error("Defintion file linting failed")
                         }
+                    }
+              }
+        }
+        
+        stage('Validate Queries') {
+            steps {
+                    script {
+                        
+                            withCredentials([string(credentialsId: 'gravwell-token', variable: 'GRAVWELL_TOKEN')]){
+                                def VALIDATION_RESULT = sh(script:"""
+                                                                   python3 -m venv venv
+                                                                   . venv/bin/activate
+                                                                   python3 run.py --token $GRAVWELL_TOKEN --validate-queries
+                                                                   """, returnStatus: true)
+                                env.VALIDATION_RESULT = VALIDATION_RESULT
+                                if(env.VALIDATION_RESULT == '0') {
+                                    echo "Query validation passed"
+                                }
+                                if(env.VALIDATION_RESULT == '1') {
+                                    error("Query validation failed")
+                                }
+                          }
                     }
             }
         }
@@ -47,7 +80,6 @@ pipeline {
                         sh """
                            python3 -m venv venv
                            . venv/bin/activate
-                           python3 -m pip install -r requirements.txt
                            python3 run.py --token $GRAVWELL_TOKEN --sync-all
                            """   
                     }

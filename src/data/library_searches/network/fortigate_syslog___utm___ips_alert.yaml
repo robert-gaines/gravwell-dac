@@ -7,7 +7,8 @@ WriteAccess:
   GIDs: []
 Name: Fortigate Syslog - UTM - IPS Alert
 Description: Fortigate Syslog - UTM - IPS Alert
-Query: tag=syslog kv -q level type=="utm" subtype=="ips" srcip dstip | eval level == "alert"
+Query: tag=syslog kv -q level type=="utm" subtype=="ips" srcip dstip | eval level
+  == "alert"
 GUID: be11de2e-be82-4ad7-9246-90d50a2a5358
 Labels:
   - network

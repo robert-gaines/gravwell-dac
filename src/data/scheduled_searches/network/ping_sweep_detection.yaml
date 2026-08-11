@@ -8,16 +8,17 @@ Global: false
 WriteAccess:
   Global: false
   GIDs: []
-Name: Honeypot Incursions
-Description: Honeypot Incursion
+Name: Ping Sweep Detection
+Description: Ping Sweep Detection
 Labels:
-  - Honeypot
+  - Reconnaissance
+  - T1595.001
   - High
   - network
 Owner: 1
 Schedule: '*/5 * * * *'
 Timezone: ''
-Updated: '2026-07-05T15:06:10.295667119-07:00'
+Updated: '2026-08-10T19:41:25.207571558-07:00'
 Disabled: false
 OneShot: false
 DebugMode: false
@@ -25,8 +26,8 @@ DebugEvent: null
 BackfillEnabled: true
 ScheduledType: search
 SearchReference: 00000000-0000-0000-0000-000000000000
-SearchString: "tag=syslog syslog Message \r\n| words \"permit-wan-to-honeypots\" \r\
-  \n| kv srcip srcport dstip dstport srccountry action msg"
+SearchString: tag=syslog kv -q srcip dstip proto | eval (proto==1) | stats count by
+  dstip | stats unique_count | eval (unique_count >= 20)
 Duration: -300
 SearchSinceLastRun: false
 TimeframeOffset: 0
